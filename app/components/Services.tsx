@@ -4,22 +4,12 @@ const SERVICES = [
   {
     title: "Selo & Gravadora",
     description:
-      "Lançamento e distribuição de música autoral com suporte completo ao artista.",
+      "Lançamento e distribuição de música com suporte completo ao artista.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-8 w-8">
         <circle cx="12" cy="12" r="10" />
         <circle cx="12" cy="12" r="3" />
         <path d="M12 2v4M12 18v4M2 12h4M18 12h4" strokeLinecap="round" />
-      </svg>
-    ),
-  },
-  {
-    title: "Branding Artístico",
-    description:
-      "Construção de identidade visual e posicionamento de marca para artistas e projetos musicais.",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-8 w-8">
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
   },
@@ -36,12 +26,12 @@ const SERVICES = [
     ),
   },
   {
-    title: "Educação",
+    title: "Branding Artístico",
     description:
-      "Workshops, mentorias e programas de capacitação para artistas em desenvolvimento.",
+      "Construção de identidade visual e posicionamento de marca para artistas e projetos musicais.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-8 w-8">
-        <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2zM22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
   },
@@ -52,6 +42,27 @@ const SERVICES = [
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-8 w-8">
         <path d="M22 12h-4l-3 9L9 3l-3 9H2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+  {
+    title: "Shows",
+    description:
+      "Produção e realização de shows, apresentações ao vivo e experiências musicais memoráveis.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-8 w-8">
+        <path d="M12 2v8M4.93 10.93l1.41 1.41M2 18h2M20 18h2M17.66 12.34l1.41-1.41" strokeLinecap="round" />
+        <path d="M6 18h12a2 2 0 002-2c0-4-3-6-8-6s-8 2-8 6a2 2 0 002 2zM4 22h16" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+  {
+    title: "Educação",
+    description:
+      "Workshops, mentorias e programas de capacitação para artistas em desenvolvimento.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-8 w-8">
+        <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2zM22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
   },

@@ -7,8 +7,11 @@ const NAV_LINKS = [
   { label: "Sobre", href: "#sobre", id: "sobre" },
   { label: "Espaço", href: "#espaco", id: "espaco" },
   { label: "Serviços", href: "#servicos", id: "servicos" },
-  { label: "Artistas", href: "#artistas", id: "artistas" },
+  { label: "Selo", href: "#selo", id: "selo" },
   { label: "Ouça", href: "#playlist", id: "playlist" },
+  { label: "Eventos", href: "#eventos", id: "eventos" },
+  { label: "Educação", href: "#educacao", id: "educacao" },
+  { label: "Imprensa", href: "#imprensa", id: "imprensa" },
   { label: "Galeria", href: "#galeria", id: "galeria" },
   { label: "Contato", href: "#contato", id: "contato" },
 ];
@@ -56,8 +59,8 @@ export default function Header() {
           <Image
             src={
               scrolled
-                ? "/images/logos/MaM-logo_simbolo.png"
-                : "/images/logos/MaM-logo_simbolo_negativo.png"
+                ? "/images/logos/logo-azul-escuro.png"
+                : "/images/logos/logo-bege.png"
             }
             alt="Música aos Montes"
             width={48}
@@ -66,12 +69,12 @@ export default function Header() {
           />
         </a>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-5 lg:flex">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className={`relative text-sm font-bold uppercase tracking-widest transition-colors duration-200 ${
+              className={`relative text-xs font-bold uppercase tracking-widest transition-colors duration-200 ${
                 scrolled
                   ? activeSection === link.id
                     ? "text-purple"
@@ -91,7 +94,7 @@ export default function Header() {
 
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className={`flex flex-col gap-1.5 md:hidden ${
+          className={`flex flex-col gap-1.5 lg:hidden ${
             scrolled ? "text-navy" : "text-cream"
           }`}
           aria-label="Menu"
@@ -115,7 +118,7 @@ export default function Header() {
       </div>
 
       <div
-        className={`overflow-hidden transition-all duration-300 md:hidden ${
+        className={`overflow-hidden transition-all duration-300 lg:hidden ${
           menuOpen ? "max-h-96" : "max-h-0"
         }`}
       >

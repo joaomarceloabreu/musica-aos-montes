@@ -33,7 +33,7 @@ export default function Hero() {
 
       <div className="relative z-10 flex flex-col items-center gap-8">
         <Image
-          src="/images/logos/MaM-logo_principal_negativa.png"
+          src="/images/logos/logo-bege.png"
           alt="Música aos Montes"
           width={400}
           height={400}

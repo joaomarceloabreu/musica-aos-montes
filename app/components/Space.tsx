@@ -15,15 +15,15 @@ const SPACES = [
     image: "/images/elements/MaM-elementos-02.jpg",
   },
   {
-    title: "Espaço de Ensaio",
+    title: "Espaço de Ensaio & Auditório",
     description:
-      "Salas para ensaios e preparação de shows, com infraestrutura completa para bandas e artistas solo.",
+      "Espaço versátil para ensaios, preparação de shows, workshops e palestras, com infraestrutura completa para bandas e artistas.",
     image: "/images/elements/MaM-padrao-04.jpg",
   },
   {
-    title: "Auditório",
+    title: "Shows & Eventos",
     description:
-      "Espaço multiuso para shows intimistas, workshops, palestras e eventos criativos.",
+      "Palco e infraestrutura para shows intimistas, lançamentos, festas e eventos criativos em um ambiente único.",
     image: "/images/elements/MaM-padrao-05.jpg",
   },
 ];

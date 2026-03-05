@@ -4,7 +4,10 @@ const NAV_LINKS = [
   { label: "Sobre", href: "#sobre" },
   { label: "Espaço", href: "#espaco" },
   { label: "Serviços", href: "#servicos" },
-  { label: "Artistas", href: "#artistas" },
+  { label: "Selo", href: "#selo" },
+  { label: "Eventos", href: "#eventos" },
+  { label: "Educação", href: "#educacao" },
+  { label: "Imprensa", href: "#imprensa" },
   { label: "Galeria", href: "#galeria" },
   { label: "Contato", href: "#contato" },
 ];
@@ -12,7 +15,7 @@ const NAV_LINKS = [
 const SOCIALS = [
   {
     label: "Instagram",
-    href: "#",
+    href: "https://www.instagram.com/musicaaosmontes/",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-5 w-5">
         <rect x="2" y="2" width="20" height="20" rx="5" />
@@ -23,7 +26,7 @@ const SOCIALS = [
   },
   {
     label: "YouTube",
-    href: "#",
+    href: "https://www.youtube.com/@musicaaosmontes",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-5 w-5">
         <path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.43z" />
@@ -33,7 +36,7 @@ const SOCIALS = [
   },
   {
     label: "Spotify",
-    href: "#",
+    href: "https://open.spotify.com/playlist/4uk0ZIJDZBT7fLmD5mChwC",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-5 w-5">
         <circle cx="12" cy="12" r="10" />
@@ -50,7 +53,7 @@ export default function Footer() {
         <div className="grid gap-12 md:grid-cols-3">
           <div>
             <Image
-              src="/images/logos/MaM-logo_simbolo.png"
+              src="/images/logos/logo-azul-escuro.png"
               alt="Música aos Montes"
               width={64}
               height={64}
@@ -88,6 +91,8 @@ export default function Footer() {
                 <a
                   key={social.label}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={social.label}
                   className="flex h-10 w-10 items-center justify-center rounded-full border border-navy/10 text-navy/60 transition-all hover:border-purple hover:text-purple"
                 >

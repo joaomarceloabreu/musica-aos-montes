@@ -1,81 +1,81 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "Roca";
-  src: url("/fonts/Roca Thin.ttf") format("truetype");
-  font-weight: 100;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Roca";
-  src: url("/fonts/Roca Thin Italic.ttf") format("truetype");
-  font-weight: 100;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Roca";
-  src: url("/fonts/Roca Light.ttf") format("truetype");
+  font-family: "Cormorant Garamond";
+  src: url("/fonts/CormorantGaramond-Light.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Roca";
-  src: url("/fonts/Roca Light Italic.ttf") format("truetype");
+  font-family: "Cormorant Garamond";
+  src: url("/fonts/CormorantGaramond-LightItalic.ttf") format("truetype");
   font-weight: 300;
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Roca";
-  src: url("/fonts/Roca Regular.ttf") format("truetype");
+  font-family: "Cormorant Garamond";
+  src: url("/fonts/CormorantGaramond-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Roca";
-  src: url("/fonts/Roca Italic.ttf") format("truetype");
+  font-family: "Cormorant Garamond";
+  src: url("/fonts/CormorantGaramond-Italic.ttf") format("truetype");
   font-weight: 400;
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Roca";
-  src: url("/fonts/Roca Bold.ttf") format("truetype");
-  font-weight: 700;
+  font-family: "Cormorant Garamond";
+  src: url("/fonts/CormorantGaramond-Medium.ttf") format("truetype");
+  font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Roca";
-  src: url("/fonts/Roca Bold Italic.ttf") format("truetype");
-  font-weight: 700;
+  font-family: "Cormorant Garamond";
+  src: url("/fonts/CormorantGaramond-MediumItalic.ttf") format("truetype");
+  font-weight: 500;
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Roca";
-  src: url("/fonts/Roca Black.ttf") format("truetype");
-  font-weight: 900;
+  font-family: "Cormorant Garamond";
+  src: url("/fonts/CormorantGaramond-SemiBold.ttf") format("truetype");
+  font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Roca";
-  src: url("/fonts/Roca Black Italic.ttf") format("truetype");
-  font-weight: 900;
+  font-family: "Cormorant Garamond";
+  src: url("/fonts/CormorantGaramond-SemiBoldItalic.ttf") format("truetype");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("/fonts/CormorantGaramond-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("/fonts/CormorantGaramond-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
   font-style: italic;
   font-display: swap;
 }
@@ -101,7 +101,7 @@
   --color-turquoise-light: #5DD4CE;
   --color-terra-light: #C05038;
 
-  --font-sans: "Roca", system-ui, sans-serif;
+  --font-sans: "Cormorant Garamond", "Georgia", serif;
 }
 
 html {
@@ -111,7 +111,7 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "Roca", system-ui, sans-serif;
+  font-family: "Cormorant Garamond", "Georgia", serif;
 }
 
 @keyframes fadeIn {

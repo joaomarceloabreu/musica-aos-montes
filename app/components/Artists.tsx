@@ -12,11 +12,11 @@ const ARTISTS = [
 
 export default function Artists() {
   return (
-    <section id="artistas" className="bg-navy py-24 md:py-32">
+    <section id="selo" className="bg-navy py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
         <ScrollReveal>
           <h2 className="mb-2 text-sm font-bold uppercase tracking-[0.3em] text-turquoise">
-            {">"} Artistas
+            {">"} Selo
           </h2>
           <h3 className="mb-6 text-4xl font-bold text-cream md:text-5xl">
             Quem faz parte

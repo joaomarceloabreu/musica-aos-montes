@@ -7,6 +7,9 @@ import SectionDivider from "./components/SectionDivider";
 import Services from "./components/Services";
 import Artists from "./components/Artists";
 import PlaylistSection from "./components/PlaylistSection";
+import Events from "./components/Events";
+import Education from "./components/Education";
+import Press from "./components/Press";
 import Gallery from "./components/Gallery";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
@@ -38,6 +41,21 @@ export default function Home() {
         <SectionDivider
           pattern="/images/elements/MaM-padrao-06.jpg"
           variant="light"
+        />
+        <Events />
+        <SectionDivider
+          pattern="/images/elements/MaM-padrao-04.jpg"
+          variant="dark"
+        />
+        <Education />
+        <SectionDivider
+          pattern="/images/elements/MaM-padrao-05.jpg"
+          variant="light"
+        />
+        <Press />
+        <SectionDivider
+          pattern="/images/elements/MaM-padrao-01.jpg"
+          variant="dark"
         />
         <Gallery />
         <SectionDivider

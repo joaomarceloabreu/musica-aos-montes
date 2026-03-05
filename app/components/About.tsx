@@ -32,7 +32,7 @@ export default function About() {
             <div className="relative">
               <div className="aspect-square overflow-hidden rounded-2xl bg-navy/10">
                 <Image
-                  src="/images/logos/MaM-logo_principal_fundo.jpg"
+                  src="/images/logos/logo-principal.png"
                   alt="Música aos Montes"
                   width={600}
                   height={600}

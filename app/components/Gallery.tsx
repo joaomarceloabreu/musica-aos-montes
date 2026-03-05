@@ -10,7 +10,7 @@ const GALLERY_ITEMS = [
   { id: 6, src: "/images/elements/MaM-padrao-04.jpg", alt: "Padrão MaM 4" },
   { id: 7, src: "/images/elements/MaM-padrao-05.jpg", alt: "Padrão MaM 5" },
   { id: 8, src: "/images/elements/MaM-padrao-06.jpg", alt: "Padrão MaM 6" },
-  { id: 9, src: "/images/logos/MaM-logo_principal_fundo.jpg", alt: "Logo MaM" },
+  { id: 9, src: "/images/logos/logo-principal.png", alt: "Logo MaM" },
 ];
 
 export default function Gallery() {
