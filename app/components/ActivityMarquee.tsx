@@ -28,8 +28,8 @@ function MarqueeTrack() {
 
 export default function ActivityMarquee() {
   return (
-    <section className="overflow-hidden border-y border-navy/10 bg-cream py-6">
-      <div className="animate-marquee flex gap-8 text-navy/80 hover:[animation-play-state:paused]">
+    <section className="overflow-x-hidden border-y border-navy/10 bg-cream py-6">
+      <div className="animate-marquee flex w-max gap-8 text-navy/80 hover:[animation-play-state:paused]">
         <MarqueeTrack />
         <MarqueeTrack />
       </div>

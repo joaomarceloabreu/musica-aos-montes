@@ -142,8 +142,8 @@ export default function PlaylistSection() {
 
   if (loading) {
     return (
-      <section id="selo" className="bg-cream py-24 md:py-32">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-4 px-6 py-20">
+      <section id="selo" className="overflow-x-hidden bg-cream py-16 md:py-32">
+        <div className="mx-auto flex max-w-7xl min-w-0 flex-col items-center justify-center gap-4 px-4 py-20 sm:px-6">
           <div className="h-10 w-10 animate-spin rounded-full border-4 border-purple/20 border-t-purple" />
           <p className="text-sm text-navy/60">Carregando playlist...</p>
         </div>
@@ -153,8 +153,8 @@ export default function PlaylistSection() {
 
   if (error || !data) {
     return (
-      <section id="selo" className="bg-cream py-24 md:py-32">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-4 px-6 py-20">
+      <section id="selo" className="overflow-x-hidden bg-cream py-16 md:py-32">
+        <div className="mx-auto flex max-w-7xl min-w-0 flex-col items-center justify-center gap-4 px-4 py-20 sm:px-6">
           <p className="text-terra">{error ?? "Dados não disponíveis"}</p>
           <button
             onClick={() => window.location.reload()}
@@ -187,8 +187,8 @@ export default function PlaylistSection() {
 
   return (
     <>
-      <section id="selo" className="bg-cream py-24 md:py-32">
-        <div className="mx-auto max-w-7xl px-6">
+      <section id="selo" className="overflow-x-hidden bg-cream py-16 md:py-32">
+        <div className="mx-auto max-w-7xl min-w-0 px-4 sm:px-6">
           <ScrollReveal>
             <div className="mb-16 text-center">
               <h2 className="mb-2 text-sm font-bold uppercase tracking-[0.3em] text-purple">
@@ -200,10 +200,10 @@ export default function PlaylistSection() {
             </div>
           </ScrollReveal>
 
-          <div className="grid gap-10 lg:grid-cols-[340px_1fr]">
+          <div className="grid min-w-0 gap-8 lg:grid-cols-[minmax(0,340px)_minmax(0,1fr)] lg:gap-10">
             {/* Playlist cover */}
-            <ScrollReveal direction="left">
-              <div className="sticky top-28">
+            <ScrollReveal direction="left" className="min-w-0">
+              <div className="mx-auto w-full max-w-xs lg:sticky lg:top-28 lg:max-w-none">
                 <div className="overflow-hidden rounded-2xl shadow-2xl shadow-navy/20">
                   {playlist.image ? (
                     <Image
@@ -211,7 +211,8 @@ export default function PlaylistSection() {
                       alt={playlist.name}
                       width={340}
                       height={340}
-                      className="aspect-square w-full object-cover"
+                      sizes="(max-width: 1024px) 288px, 340px"
+                      className="aspect-square h-auto w-full max-w-full object-cover"
                     />
                   ) : (
                     <div className="flex aspect-square w-full items-center justify-center bg-navy/10">
@@ -247,8 +248,8 @@ export default function PlaylistSection() {
             </ScrollReveal>
 
             {/* Track list */}
-            <ScrollReveal direction="right" delay={150}>
-              <div className="space-y-2">
+            <ScrollReveal direction="right" delay={150} className="min-w-0">
+              <div className="min-w-0 space-y-2">
                 {pageTracks.map((track, i) => {
                   const globalIdx = startIdx + i;
                   const isActive = currentTrack === globalIdx;
@@ -257,14 +258,14 @@ export default function PlaylistSection() {
                   return (
                     <div
                       key={track.id}
-                      className={`group flex items-center gap-4 rounded-xl p-3 transition-all duration-200 ${
+                      className={`group flex min-w-0 items-center gap-2 rounded-xl p-2 transition-all duration-200 sm:gap-3 sm:p-3 ${
                         isActive
                           ? "bg-purple/10 shadow-sm"
                           : "hover:bg-navy/5"
                       }`}
                     >
                       {/* Album art */}
-                      <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-lg">
+                      <div className="relative h-10 w-10 flex-shrink-0 overflow-hidden rounded-lg sm:h-12 sm:w-12">
                         {track.albumImage ? (
                           <Image
                             src={track.albumImageSmall ?? track.albumImage}
@@ -288,7 +289,7 @@ export default function PlaylistSection() {
                             ? "Tocar preview de 30s"
                             : "Ouvir no Spotify"
                         }
-                        className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full transition-all duration-200 ${
+                        className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full transition-all duration-200 sm:h-10 sm:w-10 ${
                           isActive && isPlaying
                             ? "bg-purple text-cream"
                             : hasPreview
@@ -350,7 +351,7 @@ export default function PlaylistSection() {
 
               {/* Pagination */}
               {totalPages > 1 && (
-                <div className="mt-8 flex items-center justify-center gap-2">
+                <div className="mt-8 flex max-w-full flex-wrap items-center justify-center gap-2">
                   <button
                     onClick={() => setPage((p) => Math.max(1, p - 1))}
                     disabled={page === 1}
@@ -396,7 +397,7 @@ export default function PlaylistSection() {
 
       {/* Floating Mini Player */}
       {currentTrackData && (
-        <div className="fixed bottom-4 right-4 z-50 w-80 animate-[fadeIn_0.3s_ease-out] rounded-2xl border border-navy/10 bg-cream/95 p-4 shadow-2xl shadow-navy/20 backdrop-blur-md">
+        <div className="fixed inset-x-4 bottom-4 z-50 mx-auto max-w-80 animate-[fadeIn_0.3s_ease-out] rounded-2xl border border-navy/10 bg-cream/95 p-4 shadow-2xl shadow-navy/20 backdrop-blur-md sm:inset-x-auto sm:right-4 sm:mx-0">
           <div className="flex items-center gap-3">
             {currentTrackData.albumImage && (
               <div className="h-11 w-11 flex-shrink-0 overflow-hidden rounded-lg">

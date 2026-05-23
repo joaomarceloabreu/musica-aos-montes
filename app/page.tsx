@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <DialogProvider>
       <Header />
-      <main>
+      <main className="overflow-x-hidden">
         <Hero />
         <About />
         <ActivityMarquee />
