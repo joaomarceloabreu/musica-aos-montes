@@ -70,8 +70,8 @@ const SERVICES = [
 
 export default function Services() {
   return (
-    <section id="servicos" className="bg-cream py-24 md:py-32">
-      <div className="mx-auto max-w-7xl px-6">
+    <section id="servicos" className="overflow-x-hidden bg-cream py-24 md:py-32">
+      <div className="mx-auto max-w-7xl min-w-0 px-4 sm:px-6">
         <ScrollReveal>
           <div className="mb-16 text-center">
             <h2 className="mb-2 text-sm font-bold uppercase tracking-[0.3em] text-purple">

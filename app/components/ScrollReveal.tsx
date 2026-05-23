@@ -55,7 +55,9 @@ export default function ScrollReveal({
   return (
     <div
       ref={ref}
-      className={className}
+      className={`max-w-full min-w-0 ${
+        direction === "left" || direction === "right" ? "overflow-hidden" : ""
+      } ${className}`}
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? "none" : TRANSFORMS[direction],
