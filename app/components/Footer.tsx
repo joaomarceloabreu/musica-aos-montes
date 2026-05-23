@@ -1,16 +1,8 @@
-import Image from "next/image";
+"use client";
 
-const NAV_LINKS = [
-  { label: "Sobre", href: "#sobre" },
-  { label: "Espaço", href: "#espaco" },
-  { label: "Serviços", href: "#servicos" },
-  { label: "Selo", href: "#selo" },
-  { label: "Eventos", href: "#eventos" },
-  { label: "Educação", href: "#educacao" },
-  { label: "Imprensa", href: "#imprensa" },
-  { label: "Galeria", href: "#galeria" },
-  { label: "Contato", href: "#contato" },
-];
+import Image from "next/image";
+import { NAV_LINKS } from "../lib/nav-links";
+import { useDialog } from "./DialogProvider";
 
 const SOCIALS = [
   {
@@ -46,7 +38,13 @@ const SOCIALS = [
   },
 ];
 
+function navLinkKey(link: (typeof NAV_LINKS)[number]) {
+  return "dialog" in link ? link.dialog : link.href;
+}
+
 export default function Footer() {
+  const { openDialog } = useDialog();
+
   return (
     <footer className="border-t border-navy/10 bg-cream py-16">
       <div className="mx-auto max-w-7xl px-6">
@@ -70,15 +68,29 @@ export default function Footer() {
               Navegação
             </h4>
             <nav className="flex flex-col gap-3">
-              {NAV_LINKS.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="text-sm text-navy/60 transition-colors hover:text-purple"
-                >
-                  {link.label}
-                </a>
-              ))}
+              {NAV_LINKS.map((link) =>
+                "dialog" in link ? (
+                  <button
+                    key={navLinkKey(link)}
+                    type="button"
+                    onClick={() => openDialog(link.dialog)}
+                    className="text-left text-sm text-navy/60 transition-colors hover:text-purple"
+                  >
+                    {link.label}
+                  </button>
+                ) : (
+                  <a
+                    key={navLinkKey(link)}
+                    href={link.href}
+                    {...("external" in link && link.external
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
+                    className="text-sm text-navy/60 transition-colors hover:text-purple"
+                  >
+                    {link.label}
+                  </a>
+                )
+              )}
             </nav>
           </div>
 

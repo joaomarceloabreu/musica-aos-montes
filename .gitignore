@@ -35,6 +35,10 @@ yarn-error.log*
 
 # large video files
 public/movies/*.mov
+public/movies/gravacao-tela.mp4
+public/fonts/*.mp4
+*gravacao-tela*
+*Gravação de Tela*
 
 # vercel
 .vercel

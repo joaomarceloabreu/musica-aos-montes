@@ -3,16 +3,27 @@ import ScrollReveal from "./ScrollReveal";
 
 export default function About() {
   return (
-    <section id="sobre" className="relative bg-cream py-24 md:py-32">
+    <section id="sobre" className="relative bg-cream py-16 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
+        <div className="grid items-center gap-8 md:grid-cols-2 md:gap-16">
           <ScrollReveal direction="left">
             <h2 className="mb-2 text-sm font-bold uppercase tracking-[0.3em] text-purple">
               {">"} Sobre
             </h2>
-            <h3 className="mb-8 text-4xl font-bold leading-tight text-navy md:text-5xl">
+            <h3 className="mb-6 text-4xl font-bold leading-tight text-navy md:mb-8 md:text-5xl">
               Uma Casa Criativa aos pés da Serra
             </h3>
+
+            <div className="mb-6 flex justify-center md:hidden">
+              <Image
+                src="/images/logos/logo-principal.png"
+                alt="Música aos Montes"
+                width={160}
+                height={160}
+                className="w-32"
+              />
+            </div>
+
             <div className="space-y-6 text-lg leading-relaxed text-navy/80">
               <p>
                 Música Aos Montes é uma Casa Criativa situada aos pés da Serra
@@ -28,7 +39,7 @@ export default function About() {
             </div>
           </ScrollReveal>
 
-          <ScrollReveal direction="right" delay={200}>
+          <ScrollReveal direction="right" delay={200} className="hidden md:block">
             <div className="relative">
               <div className="aspect-square overflow-hidden rounded-2xl bg-navy/10">
                 <Image
