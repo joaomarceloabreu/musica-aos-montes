@@ -142,7 +142,7 @@ export default function PlaylistSection() {
 
   if (loading) {
     return (
-      <section className="bg-cream py-24 md:py-32">
+      <section id="selo" className="bg-cream py-24 md:py-32">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-4 px-6 py-20">
           <div className="h-10 w-10 animate-spin rounded-full border-4 border-purple/20 border-t-purple" />
           <p className="text-sm text-navy/60">Carregando playlist...</p>
@@ -153,7 +153,7 @@ export default function PlaylistSection() {
 
   if (error || !data) {
     return (
-      <section className="bg-cream py-24 md:py-32">
+      <section id="selo" className="bg-cream py-24 md:py-32">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-4 px-6 py-20">
           <p className="text-terra">{error ?? "Dados não disponíveis"}</p>
           <button
@@ -187,12 +187,12 @@ export default function PlaylistSection() {
 
   return (
     <>
-      <section id="playlist" className="bg-cream py-24 md:py-32">
+      <section id="selo" className="bg-cream py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-6">
           <ScrollReveal>
             <div className="mb-16 text-center">
               <h2 className="mb-2 text-sm font-bold uppercase tracking-[0.3em] text-purple">
-                {">"} Ouça
+                {">"} Selo
               </h2>
               <h3 className="mb-6 text-4xl font-bold text-navy md:text-5xl">
                 Lançamentos do Selo

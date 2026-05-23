@@ -2,21 +2,15 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { NAV_LINKS } from "../lib/nav-links";
+import { useDialog } from "./DialogProvider";
 
-const NAV_LINKS = [
-  { label: "Sobre", href: "#sobre", id: "sobre" },
-  { label: "Espaço", href: "#espaco", id: "espaco" },
-  { label: "Serviços", href: "#servicos", id: "servicos" },
-  { label: "Selo", href: "#selo", id: "selo" },
-  { label: "Ouça", href: "#playlist", id: "playlist" },
-  { label: "Eventos", href: "#eventos", id: "eventos" },
-  { label: "Educação", href: "#educacao", id: "educacao" },
-  { label: "Imprensa", href: "#imprensa", id: "imprensa" },
-  { label: "Galeria", href: "#galeria", id: "galeria" },
-  { label: "Contato", href: "#contato", id: "contato" },
-];
+function navLinkKey(link: (typeof NAV_LINKS)[number]) {
+  return "dialog" in link ? link.dialog : link.href;
+}
 
 export default function Header() {
+  const { openDialog } = useDialog();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
@@ -28,9 +22,12 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    const sections = NAV_LINKS.map((l) => document.getElementById(l.id)).filter(
-      Boolean
-    ) as HTMLElement[];
+    const sections = NAV_LINKS.filter(
+      (l): l is Extract<(typeof NAV_LINKS)[number], { id: string }> =>
+        "id" in l && !!l.id
+    )
+      .map((l) => document.getElementById(l.id))
+      .filter(Boolean) as HTMLElement[];
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -46,6 +43,29 @@ export default function Header() {
     return () => observer.disconnect();
   }, []);
 
+  const handleDialogOpen = (dialog: "galeria" | "na-midia") => {
+    openDialog(dialog);
+    setMenuOpen(false);
+  };
+
+  const desktopLinkClass = (link: (typeof NAV_LINKS)[number]) =>
+    `relative text-xs font-bold uppercase tracking-widest transition-colors duration-200 ${
+      scrolled
+        ? "id" in link && activeSection === link.id
+          ? "text-purple"
+          : "text-navy hover:text-purple"
+        : "id" in link && activeSection === link.id
+          ? "text-turquoise"
+          : "text-cream hover:text-turquoise"
+    }`;
+
+  const mobileLinkClass = (link: (typeof NAV_LINKS)[number]) =>
+    `text-sm font-bold uppercase tracking-widest transition-colors ${
+      "id" in link && activeSection === link.id
+        ? "text-turquoise"
+        : "text-cream hover:text-turquoise"
+    }`;
+
   return (
     <header
       className={`fixed top-0 left-0 z-50 w-full transition-all duration-300 ${
@@ -55,7 +75,7 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <a href="#" className="flex-shrink-0">
+        <a href="/" className="flex-shrink-0">
           <Image
             src={
               scrolled
@@ -70,26 +90,32 @@ export default function Header() {
         </a>
 
         <nav className="hidden items-center gap-5 lg:flex">
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className={`relative text-xs font-bold uppercase tracking-widest transition-colors duration-200 ${
-                scrolled
-                  ? activeSection === link.id
-                    ? "text-purple"
-                    : "text-navy hover:text-purple"
-                  : activeSection === link.id
-                    ? "text-turquoise"
-                    : "text-cream hover:text-turquoise"
-              }`}
-            >
-              {link.label}
-              {activeSection === link.id && (
-                <span className="absolute -bottom-1 left-0 h-0.5 w-full rounded-full bg-current transition-all" />
-              )}
-            </a>
-          ))}
+          {NAV_LINKS.map((link) =>
+            "dialog" in link ? (
+              <button
+                key={navLinkKey(link)}
+                type="button"
+                onClick={() => handleDialogOpen(link.dialog)}
+                className={desktopLinkClass(link)}
+              >
+                {link.label}
+              </button>
+            ) : (
+              <a
+                key={navLinkKey(link)}
+                href={link.href}
+                {...("external" in link && link.external
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+                className={desktopLinkClass(link)}
+              >
+                {link.label}
+                {"id" in link && activeSection === link.id && (
+                  <span className="absolute -bottom-1 left-0 h-0.5 w-full rounded-full bg-current transition-all" />
+                )}
+              </a>
+            )
+          )}
         </nav>
 
         <button
@@ -119,25 +145,35 @@ export default function Header() {
 
       <div
         className={`overflow-hidden transition-all duration-300 lg:hidden ${
-          menuOpen ? "max-h-96" : "max-h-0"
+          menuOpen ? "max-h-[36rem]" : "max-h-0"
         }`}
       >
         <nav className="bg-navy/95 backdrop-blur-sm">
           <div className="flex flex-col items-center gap-6 px-6 py-8">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setMenuOpen(false)}
-                className={`text-sm font-bold uppercase tracking-widest transition-colors ${
-                  activeSection === link.id
-                    ? "text-turquoise"
-                    : "text-cream hover:text-turquoise"
-                }`}
-              >
-                {link.label}
-              </a>
-            ))}
+            {NAV_LINKS.map((link) =>
+              "dialog" in link ? (
+                <button
+                  key={navLinkKey(link)}
+                  type="button"
+                  onClick={() => handleDialogOpen(link.dialog)}
+                  className={mobileLinkClass(link)}
+                >
+                  {link.label}
+                </button>
+              ) : (
+                <a
+                  key={navLinkKey(link)}
+                  href={link.href}
+                  {...("external" in link && link.external
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                  onClick={() => setMenuOpen(false)}
+                  className={mobileLinkClass(link)}
+                >
+                  {link.label}
+                </a>
+              )
+            )}
           </div>
         </nav>
       </div>
