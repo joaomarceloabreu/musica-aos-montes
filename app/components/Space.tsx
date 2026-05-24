@@ -3,28 +3,23 @@ import ScrollReveal from "./ScrollReveal";
 
 const SPACES = [
   {
-    title: "Estúdio de Gravação",
+    title: "Estúdio de Gravação & Produção",
     description:
-      "Sala de gravação profissional com tratamento acústico de ponta, equipada para produção musical de alta qualidade.",
-    image: "/images/elements/MaM-elementos-01.jpg",
-  },
-  {
-    title: "Sala de Produção",
-    description:
-      "Ambiente dedicado à pré e pós-produção, mixagem e masterização com equipamentos de referência.",
-    image: "/images/elements/MaM-elementos-02.jpg",
+      "Sala de gravação com tratamento acústico de ponta e ambiente dedicado à pré e pós-produção, mixagem e masterização com equipamentos de referência.",
+    image: "/images/gravacao.jpeg",
   },
   {
     title: "Espaço de Ensaio & Auditório",
     description:
       "Espaço versátil para ensaios, preparação de shows, workshops e palestras, com infraestrutura completa para bandas e artistas.",
-    image: "/images/elements/MaM-padrao-04.jpg",
+    image: "/images/ensaio.jpeg",
+    objectPosition: "object-top",
   },
   {
     title: "Shows & Eventos",
     description:
       "Palco e infraestrutura para shows intimistas, lançamentos, festas e eventos criativos em um ambiente único.",
-    image: "/images/elements/MaM-padrao-05.jpg",
+    image: "/images/shows.jpeg",
   },
 ];
 
@@ -45,17 +40,18 @@ export default function Space() {
           </p>
         </ScrollReveal>
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {SPACES.map((space, i) => (
             <ScrollReveal key={space.title} delay={i * 120}>
               <div className="group relative overflow-hidden rounded-xl border border-cream/10 bg-cream/5 transition-all duration-500 hover:border-turquoise/30 hover:bg-cream/10 hover:-translate-y-2 hover:shadow-xl hover:shadow-turquoise/5">
-                <div className="h-48 overflow-hidden">
+                <div className="aspect-[4/3] overflow-hidden">
                   <Image
                     src={space.image}
                     alt={space.title}
-                    width={400}
-                    height={200}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    width={4032}
+                    height={3024}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className={`h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 ${"objectPosition" in space ? space.objectPosition : "object-center"}`}
                   />
                 </div>
                 <div className="p-6">
