@@ -11,6 +11,11 @@ export const NAV_LINKS = [
     href: "https://www.youtube.com/@musicaaosmontes",
     external: true,
   },
+  {
+    label: "Cursos",
+    href: "https://www.hotmart.com/",
+    external: true,
+  },
   { label: "Na mídia", dialog: "na-midia" as DialogId },
   { label: "Galeria", dialog: "galeria" as DialogId },
   { label: "Contato", href: "/#contato", id: "contato" },
