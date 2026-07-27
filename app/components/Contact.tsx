@@ -20,6 +20,8 @@ export default function Contact() {
   const [errors, setErrors] = useState<FieldErrors>({});
   const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [sendError, setSendError] = useState<string | null>(null);
 
   const validate = (): FieldErrors => {
     const errs: FieldErrors = {};
@@ -63,13 +65,34 @@ export default function Contact() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const newErrors = validate();
     setErrors(newErrors);
     setTouched({ name: true, email: true, message: true });
-    if (Object.keys(newErrors).length === 0) {
+    if (Object.keys(newErrors).length > 0) return;
+
+    setIsSending(true);
+    setSendError(null);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        throw new Error(data?.error || "Falha ao enviar mensagem");
+      }
       setSubmitted(true);
+    } catch (error) {
+      setSendError(
+        error instanceof Error
+          ? error.message
+          : "Falha ao enviar mensagem. Tente novamente."
+      );
+    } finally {
+      setIsSending(false);
     }
   };
 
@@ -312,11 +335,16 @@ export default function Contact() {
                 )}
               </div>
 
+              {sendError && (
+                <p className="text-sm text-terra-light">{sendError}</p>
+              )}
+
               <button
                 type="submit"
-                className="group w-full rounded-lg bg-turquoise px-8 py-4 text-sm font-bold uppercase tracking-widest text-navy transition-all duration-300 hover:bg-turquoise-light hover:shadow-lg hover:shadow-turquoise/20 active:scale-[0.98] sm:w-auto"
+                disabled={isSending}
+                className="group w-full rounded-lg bg-turquoise px-8 py-4 text-sm font-bold uppercase tracking-widest text-navy transition-all duration-300 hover:bg-turquoise-light hover:shadow-lg hover:shadow-turquoise/20 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
               >
-                Enviar Mensagem
+                {isSending ? "Enviando..." : "Enviar Mensagem"}
               </button>
             </form>
           </ScrollReveal>
